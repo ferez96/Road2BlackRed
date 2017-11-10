@@ -1,12 +1,12 @@
-#Educational Codeforces Round 32 
+# Educational Codeforces Round 32 
 
-##Problem A
+## Problem A
 
 Độ phức tạp: O(n)
 
 Bài này có thể giải quyết bằng 1 vòng for, kiểm tra a[i] có phải là một 
 local extremum hay không theo đúng định nghĩa đề bài.
-##Problem B
+## Problem B
 
 Độ phức tạp: O(n)
 
@@ -15,14 +15,14 @@ thì xóa những commands khiến robot di chuyển ra vị trí đó.
 
 Nói ngắn gọn thì nếu sau n command, robot ở vị trí (x,y) thì kết quả cần tìm là:
 $n-abs(x)-abs(y)$
-##Problem C
+## Problem C
 
 Độ phức tạp: O(n)
 
 Với mỗi chữ cái $ch in [a:z]$, tìm chuỗi con dài nhất chứa tối đa 1 ký tự ch.
 
 Kết quả là giá trị nhỏ nhất với 26 chữ cái.
-##Problem D
+## Problem D
 
 Độ phức tạp: O(1)
 
@@ -33,7 +33,7 @@ hợp số index đúng vị trí là [n-k:n], như vậy đảo bài toán lạ
 Vậy kết quả là: sum( (nCi)*i!|i in [1:k] ) 
 
 Chú ý: số lớn (long long) và i = 0 với i = 1 trùng nhau.
-##Problem E
+## Problem E
 
 Độ phức tạp: O(2^(n/2))
 
@@ -53,5 +53,5 @@ B2: Với mỗi số trong set1, tìm 1 số trong set2 sao cho số này tạo 
 dư" lớn nhất. (Đã có upper_bound trong c++)
 
 B3: Duyệt lại tất cả các "tổng phần dư" chọn ra số lớn nhất.
-##Problem F
-##Problem G
+## Problem F
+## Problem G
