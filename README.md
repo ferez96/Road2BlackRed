@@ -12,7 +12,7 @@ More attempt: 5/7
 ## 10/11/2017
 
 1. Review Contest: Educational Codeforces Round 32 
-2. Read: [Geometry Concepts: Basic Concepts](https://www.topcoder.com/community/data-science/data-science-tutorials/geometry-concepts-basic-concepts/)
+2. Read: [Geometry Concepts](https://www.topcoder.com/community/data-science/data-science-tutorials/geometry-concepts-basic-concepts/): Basic Concepts
 
 ## 11/11/2017
 
@@ -40,5 +40,14 @@ Result: 3/6
 
 1. Review Codeforces Round #445 (Div  2)
 2. Attempt with [Educational Codeforces Round 32 - Problem G](http://codeforces.com/contest/888/problem/G)
-3. Read:...
+3. Read: [Geometry Concepts](https://www.topcoder.com/community/data-science/data-science-tutorials/geometry-concepts-basic-concepts/):
+- Line Intersection and its Applications 
+- Using Geometry in Topcoder Problems
+
+# 14/11/2017
+
+1. Practice:
+- Problems set: [Codechef Easy Problems](https://www.codechef.com/problems/easy?sort_by=SuccessfulSubmission&sorting_order=desc)
+
+- Target: AC with 1 submission in 10 minutes.
 
