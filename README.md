@@ -44,7 +44,7 @@ Result: 3/6
 - Line Intersection and its Applications 
 - Using Geometry in Topcoder Problems
 
-# 14/11/2017
+## 14/11/2017
 
 1. Practice:
 - Problems set: [Codechef Easy Problems](https://www.codechef.com/problems/easy?sort_by=SuccessfulSubmission&sorting_order=desc)
