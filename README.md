@@ -51,3 +51,25 @@ Result: 3/6
 
 - Target: AC with 1 submission in 10 minutes.
 
+## 15/11/2017 -> 18/11/2017
+
+1. Challenge: 100 Codechef Easy Problems
+Result: 30/100
+
+This Shiet is not good, I'll be back later!
+
+## 17/11/2017
+
+1. Practice: Codeforces Round #446 (Div. 2) 
+
+Result: 3/5
+
+## 19/11/2017
+
+1. Practice: Codeforces Round #447 (Div. 2) 
+
+Result: 2/5
+
+More attempt: 3/5
+
+
