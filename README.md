@@ -72,4 +72,17 @@ Result: 2/5
 
 More attempt: 3/5
 
+## 23/11/2017
+1. Practice: Educational Codeforces Round 33 (Rated for Div. 2) 
+
+Result: 3/6
+
+More attempt: 4/6
+
+## 26/11/2017
+1. Practice: Codeforces Round #448 (Div. 2) 
+
+Result:
+
+More attempt: 
 
