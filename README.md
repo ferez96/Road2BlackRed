@@ -82,7 +82,10 @@ More attempt: 4/6
 ## 26/11/2017
 1. Practice: Codeforces Round #448 (Div. 2) 
 
-Result:
+Result: 3/5
 
-More attempt: 
+More attempt: 4/5
+
+# 30/11/2017
+Team up, try to solve CERC'14
 
