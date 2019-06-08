@@ -9,7 +9,7 @@ const char* fo = "A.out";
 unsigned long long int n,k;
 
 int main(){
-	freopen(fi,"r", stdin), freopen(fo,"w", stdout);
+	// freopen(fi,"r", stdin), freopen(fo,"w", stdout);
 
 	int TC;
 	cin>>TC;	
