@@ -4,3 +4,6 @@
 *.stackdump
 **/.idea/
 **/out/
+
+*.out
+*:tests
