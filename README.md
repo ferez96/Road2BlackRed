@@ -1,4 +1,4 @@
-# MyCompetitiveProgramingTrainingRoad
+# My Competitive Programing Training Road
 
 ## 9/11/2017
 
