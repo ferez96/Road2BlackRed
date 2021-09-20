@@ -3,7 +3,9 @@
         {
             "name": "Win32",
             "includePath": [
-                "${workspaceFolder}/**"
+                "${workspaceFolder}/**",
+                "/usr/local/Cellar/gcc/11.2.0/include/c++/11.2.0",
+                "/usr/local/Cellar/gcc/11.2.0/include/c++/11.2.0/x86_64-apple-darwin20"
             ],
             "defines": [
                 "_DEBUG",
@@ -11,7 +13,7 @@
                 "_UNICODE"
             ],
             "windowsSdkVersion": "10.0.18362.0",
-            "compilerPath": "C:/MinGW/bin/g++.exe",
+            "compilerPath": "/usr/bin/gcc",
             "intelliSenseMode": "${default}",
             "cppStandard": "c++14"
         }

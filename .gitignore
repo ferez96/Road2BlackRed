@@ -8,3 +8,5 @@
 *.inp
 *.out
 *:tests
+
+tasks.json

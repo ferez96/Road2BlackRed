@@ -2,34 +2,58 @@
     "version": "2.0.0",
     "tasks": [
         {
+            "label": "Create Build Dir",
             "type": "shell",
-            "label": "Build - g++",
-            "command": "C:/MinGW/bin/g++.exe ${file} -std=c++14 -O2 -o ${fileDirname}/${fileBasenameNoExtension}.exe; ${fileDirname}/${fileBasenameNoExtension}.exe ",
-            "args": [],
-            "options": {
-                "cwd": "${fileDirname}"
-            },
-            "problemMatcher": [
-                "$gcc"
+            "group": "none",
+            "command": "mkdir",
+            "args": [
+                "-p",
+                "${workspaceFolder}/build/${relativeFileDirname}/bin"
             ],
-            "group": {
-                "kind": "build",
-                "isDefault": true
+            "presentation": {
+                "reveal": "never"
             }
         },
         {
+            "label": "Build Source - C++",
             "type": "shell",
-            "label": "g++.exe build active file",
-            "command": "C:/MinGW/bin/g++.exe",
+            "group": "build",
+            "command": "g++",
             "args": [
-                "-g",
-                "${file}",
+                "-Wall",
+                "-O2",
                 "-o",
-                "${fileDirname}\\${fileBasenameNoExtension}.exe"
+                "${fileBasenameNoExtension}.o",
+                "${file}"
             ],
             "options": {
-                "cwd": "C:/MinGW/bin"
-            }
+                "cwd": "${workspaceFolder}/build/${relativeFileDirname}/bin"
+            },
+            "dependsOn": [
+                "Create Build Dir"
+            ],
+            "presentation": {
+                "reveal": "never"
+            },
+            "problemMatcher": "$gcc"
+        },
+        {
+            "label": "Run Source - C++",
+            "type": "shell",
+            "command": "./${fileBasenameNoExtension}.o",
+            "group": "none",
+            "args": [],
+            "options": {
+                "cwd": "${workspaceFolder}/build/${relativeFileDirname}/bin"
+            },
+            "dependsOn": [
+                "Build Source - C++"
+            ],
+            "presentation": {
+                "reveal": "always",
+                "panel": "new"
+            },
+            "problemMatcher": "$gcc"
         }
     ]
 }
