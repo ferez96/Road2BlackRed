@@ -1,7 +1,7 @@
 {
     "python.linting.pylintEnabled": false,
-    "python.linting.pep8Enabled": true,
-    "python.linting.enabled": true,
+    "python.linting.pycodestyleEnabled": true,
+    "python.linting.enabled": false,
     "files.associations": {
         "istream": "cpp",
         "ostream": "cpp",

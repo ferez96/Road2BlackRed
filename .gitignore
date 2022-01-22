@@ -1,6 +1,7 @@
 **/bin
 *.class
 *.exe
+*.o
 *.stackdump
 **/.idea/
 **/out/
