@@ -11,7 +11,7 @@ jobs:
 
     steps:
     - name: Checkout repository
-      uses: actions/checkout@v2
+      uses: actions/checkout@v3
 
     - name: Use Node.js
       uses: actions/setup-node@v2
@@ -23,7 +23,7 @@ jobs:
 
     - name: Load streak from cache
       id: load-cache
-      uses: actions/cache@v2
+      uses: actions/cache@v4
       with:
         path: streak
         key: streak
@@ -52,7 +52,7 @@ jobs:
 
     - name: Save streak to cache
       if: steps.calculate-streak.outputs.streak != steps.load-cache.outputs.streak
-      uses: actions/cache@v2
+      uses: actions/cache@v4
       with:
         path: streak
         key: streak
