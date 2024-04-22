@@ -1,0 +1,66 @@
+name: Update Streak
+
+on:
+  push:
+    paths:
+      - 'OneEasyProblemEveryDay/**' # Chỉ kích hoạt khi có thay đổi trong thư mục OneEasyProblemEveryDay
+
+jobs:
+  update-streak:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v2
+
+    - name: Use Node.js
+      uses: actions/setup-node@v2
+      with:
+        node-version: '14'
+
+    - name: Install dependencies
+      run: npm install
+
+    - name: Load streak from cache
+      id: load-cache
+      uses: actions/cache@v2
+      with:
+        path: streak
+        key: streak
+
+    - name: Get current date
+      id: get-date
+      run: echo "::set-output name=date::$(date +%Y-%m-%d)"
+
+    - name: Check for new files
+      id: check-files
+      run: |
+        if git diff --quiet HEAD~ -- OneEasyProblemEveryDay; then
+          echo "::set-output name=streak::0"
+        else
+          echo "::set-output name=streak::1"
+        fi
+
+    - name: Calculate new streak value
+      id: calculate-streak
+      run: |
+        if [ "${{ steps.get-date.outputs.date }}" != "${{ steps.load-cache.outputs.last-date }}" ]; then
+          echo $(( ${{ steps.load-cache.outputs.streak }} + ${{ steps.check-files.outputs.streak }} ))
+        else
+          echo ${{ steps.load-cache.outputs.streak }}
+        fi
+
+    - name: Save streak to cache
+      if: steps.calculate-streak.outputs.streak != steps.load-cache.outputs.streak
+      uses: actions/cache@v2
+      with:
+        path: streak
+        key: streak
+        restore-keys: streak
+        content: |
+          streak: ${{ steps.calculate-streak.outputs.streak }}
+          last-date: ${{ steps.get-date.outputs.date }}
+
+    - name: Update streak
+      run: |
+        echo "Streak: ${{ steps.calculate-streak.outputs.streak }}"
