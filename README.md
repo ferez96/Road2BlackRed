@@ -1,106 +1,103 @@
-# My Competitive Programing Training Road
+# Road2BlackRed
 
-## Purpose
+Personal competitive-programming archive across multiple years and platforms: Codeforces, CodeChef, Google Code Jam, LeetCode, and more.
 
-This repository is a personal archive of competitive-programming practice across multiple years and platforms (Codeforces, Codechef, CodeJam, LeetCode, and others).
+[![Repo Size](https://img.shields.io/github/repo-size/ferez96/Road2BlackRed)](https://github.com/ferez96/Road2BlackRed)
+[![Last Commit](https://img.shields.io/github/last-commit/ferez96/Road2BlackRed)](https://github.com/ferez96/Road2BlackRed/commits/master)
+[![Top Language](https://img.shields.io/github/languages/top/ferez96/Road2BlackRed)](https://github.com/ferez96/Road2BlackRed)
+[![OEPE Streak Workflow](https://img.shields.io/github/actions/workflow/status/ferez96/Road2BlackRed/OneEasyProblemEveryDay-update-streak.yaml?label=OEPE%20streak)](https://github.com/ferez96/Road2BlackRed/actions/workflows/OneEasyProblemEveryDay-update-streak.yaml)
+
+## What This Repo Contains
+
+- Standalone solutions organized by year and contest/source.
+- Ongoing daily-practice track in `OneEasyProblemEveryDay/`.
+- Historical training notes from early practice sessions.
+
+## Repository Map
+
+- `2018/`, `2019/`, `2021/`, `2022/` - archived solutions by year.
+- `OneEasyProblemEveryDay/` - daily challenge workspace and streak state.
+- `.github/workflows/` - automation (including OEPE streak update workflow).
 
 ## Run One Solution
 
-Most solutions are standalone source files. To run one C++ solution locally:
+Most files are independent programs. Pick a source file and compile/run directly.
+
+### C++ (Linux/macOS, Git Bash, WSL)
 
 ```bash
 g++ -std=c++17 -O2 -Wall "<path-to-solution>.cpp" -o solution
 ./solution < input.txt
 ```
 
-If a file contains `freopen(...)`, disable or remove those lines for normal stdin/stdout execution.
+### C++ (Windows PowerShell + g++)
 
-## 9/11/2017
+```powershell
+g++ -std=c++17 -O2 -Wall "<path-to-solution>.cpp" -o solution.exe
+Get-Content "input.txt" | .\solution.exe
+```
 
-1. Practice
-Contest: [Educational Codeforces Round 32](http://codeforces.com/contest/888)
+If a solution uses `freopen(...)`, comment/remove those lines for normal stdin/stdout execution.
 
-Result: 4/7
+## OEPE (One Easy Problem Every Day)
 
-More attempt: 5/7
+Daily entries should follow:
 
-## 10/11/2017
+- `OneEasyProblemEveryDay/YYYY-MM-DD/<solution-file>`
+- Example: `OneEasyProblemEveryDay/2026-04-22/leetcode-15-3sum.go`
 
-1. Review Contest: Educational Codeforces Round 32 
-2. Read: [Geometry Concepts](https://www.topcoder.com/community/data-science/data-science-tutorials/geometry-concepts-basic-concepts/): Basic Concepts
+The OEPE workflow validates this layout and updates `OneEasyProblemEveryDay/streak.json`.
 
-## 11/11/2017
+## Early Training Log (2017)
 
-1. Practice
-Contest: [Codeforces Round #440 (Div. 2)](http://codeforces.com/contest/872)
+<details>
+<summary>Click to expand</summary>
 
-Result: 3/5
+### 09/11/2017
+- Practice: [Educational Codeforces Round 32](http://codeforces.com/contest/888)
+- Result: 4/7, then 5/7 after more attempts
 
-More Attempt: 4/5
+### 10/11/2017
+- Reviewed Educational Codeforces Round 32
+- Read [Geometry Concepts](https://www.topcoder.com/community/data-science/data-science-tutorials/geometry-concepts-basic-concepts/) (basic concepts)
 
-2. Practice
-Contest: [Codeforces Round #441 (Div. 2)](http://codeforces.com/contest/876)
+### 11/11/2017
+- Practice: [Codeforces Round #440 (Div. 2)](http://codeforces.com/contest/872), result 3/5 then 4/5
+- Practice: [Codeforces Round #441 (Div. 2)](http://codeforces.com/contest/876), result 4/6
 
-Result: 4/6
+### 12/11/2017
+- Reviewed rounds #440 and #441
+- Practice: [Codeforces Round #445 (Div. 2)](http://codeforces.com/contest/890), result 3/6
 
-## 12/11/2017
+### 13/11/2017
+- Reviewed round #445
+- Attempted [Educational Codeforces Round 32 - Problem G](http://codeforces.com/contest/888/problem/G)
+- Read geometry topics:
+  - Line intersection and applications
+  - Using geometry in Topcoder problems
 
-1. Review Codeforces Round #441 (Div.2) & Codeforces Round #440 (Div.2)
-2. Practice:
-Contest: [Codeforces Round #445 (Div  2)](http://codeforces.com/contest/890)
+### 14/11/2017
+- Practice set: [CodeChef Easy Problems](https://www.codechef.com/problems/easy?sort_by=SuccessfulSubmission&sorting_order=desc)
+- Target: AC in one submission within 10 minutes
 
-Result: 3/6
+### 15/11/2017 - 18/11/2017
+- Challenge: 100 CodeChef easy problems
+- Progress: 30/100
 
-## 13/11/2017
+### 17/11/2017
+- Practice: Codeforces Round #446 (Div. 2), result 3/5
 
-1. Review Codeforces Round #445 (Div  2)
-2. Attempt with [Educational Codeforces Round 32 - Problem G](http://codeforces.com/contest/888/problem/G)
-3. Read: [Geometry Concepts](https://www.topcoder.com/community/data-science/data-science-tutorials/geometry-concepts-basic-concepts/):
-- Line Intersection and its Applications 
-- Using Geometry in Topcoder Problems
+### 19/11/2017
+- Practice: Codeforces Round #447 (Div. 2), result 2/5 then 3/5
 
-## 14/11/2017
+### 23/11/2017
+- Practice: Educational Codeforces Round 33 (Div. 2), result 3/6 then 4/6
 
-1. Practice:
-- Problems set: [Codechef Easy Problems](https://www.codechef.com/problems/easy?sort_by=SuccessfulSubmission&sorting_order=desc)
+### 26/11/2017
+- Practice: Codeforces Round #448 (Div. 2), result 3/5 then 4/5
 
-- Target: AC with 1 submission in 10 minutes.
+### 30/11/2017
+- Team session: attempted CERC'14 problems
 
-## 15/11/2017 -> 18/11/2017
-
-1. Challenge: 100 Codechef Easy Problems
-Result: 30/100
-
-This Shiet is not good, I'll be back later!
-
-## 17/11/2017
-
-1. Practice: Codeforces Round #446 (Div. 2) 
-
-Result: 3/5
-
-## 19/11/2017
-
-1. Practice: Codeforces Round #447 (Div. 2) 
-
-Result: 2/5
-
-More attempt: 3/5
-
-## 23/11/2017
-1. Practice: Educational Codeforces Round 33 (Rated for Div. 2) 
-
-Result: 3/6
-
-More attempt: 4/6
-
-## 26/11/2017
-1. Practice: Codeforces Round #448 (Div. 2) 
-
-Result: 3/5
-
-More attempt: 4/5
-
-# 30/11/2017
-Team up, try to solve CERC'14
+</details>
 
