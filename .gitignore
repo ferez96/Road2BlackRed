@@ -2,9 +2,23 @@
 *.class
 *.exe
 *.o
+*.obj
 *.stackdump
+*.pdb
+*.ilk
+*.idb
+*.pch
+*.dSYM/
 **/.idea/
+**/.vs/
 **/out/
+**/build/
+**/cmake-build-*/
+**/CMakeFiles/
+**/CMakeCache.txt
+*.suo
+*.user
+*.VC.db
 
 *.inp
 *.out

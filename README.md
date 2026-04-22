@@ -1,5 +1,20 @@
 # My Competitive Programing Training Road
 
+## Purpose
+
+This repository is a personal archive of competitive-programming practice across multiple years and platforms (Codeforces, Codechef, CodeJam, LeetCode, and others).
+
+## Run One Solution
+
+Most solutions are standalone source files. To run one C++ solution locally:
+
+```bash
+g++ -std=c++17 -O2 -Wall "<path-to-solution>.cpp" -o solution
+./solution < input.txt
+```
+
+If a file contains `freopen(...)`, disable or remove those lines for normal stdin/stdout execution.
+
 ## 9/11/2017
 
 1. Practice
