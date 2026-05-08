@@ -16,6 +16,7 @@
 **/CMakeCache.txt
 
 # === IDE and Editor Settings ===
+**/.cursor/
 **/.idea/
 **/.vs/
 .vscode/
