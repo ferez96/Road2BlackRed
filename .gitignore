@@ -1,5 +1,5 @@
-**/bin
-*.class
+# === Binary and Build Artifacts ===
+**/bin/
 *.exe
 *.o
 *.obj
@@ -9,19 +9,24 @@
 *.idb
 *.pch
 *.dSYM/
-**/.idea/
-**/.vs/
 **/out/
 **/build/
 **/cmake-build-*/
 **/CMakeFiles/
 **/CMakeCache.txt
+
+# === IDE and Editor Settings ===
+**/.idea/
+**/.vs/
+.vscode/
+tasks.json
+
 *.suo
 *.user
 *.VC.db
+*.class
 
+# === Contest/CP Outputs ===
 *.inp
 *.out
 *:tests
-
-tasks.json
