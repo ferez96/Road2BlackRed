@@ -9,13 +9,14 @@ Personal competitive-programming archive across multiple years and platforms: Co
 
 ## What This Repo Contains
 
+- Problem solving training campaign (ON-GOING).
+- Daily-practice track in `OneEasyProblemEveryDay/` (ON-GOING).
 - Standalone solutions organized by year and contest/source.
-- Ongoing daily-practice track in `OneEasyProblemEveryDay/`.
 - Historical training notes from early practice sessions.
 
 ## Repository Map
 
-- `2018/`, `2019/`, `2021/`, `2022/` - archived solutions by year.
+- `Archived/` - archived solutions by year.
 - `OneEasyProblemEveryDay/` - daily challenge workspace and streak state.
 - `.github/workflows/` - automation (including OEPE streak update workflow).
 
@@ -39,14 +40,14 @@ Get-Content "input.txt" | .\solution.exe
 
 If a solution uses `freopen(...)`, comment/remove those lines for normal stdin/stdout execution.
 
-## OEPE (One Easy Problem Every Day)
+## OEPED (One Easy Problem Every Day)
 
 Daily entries should follow:
 
 - `OneEasyProblemEveryDay/YYYY-MM-DD/<solution-file>`
 - Example: `OneEasyProblemEveryDay/2026-04-22/leetcode-15-3sum.go`
 
-The OEPE workflow validates this layout and updates `OneEasyProblemEveryDay/streak.json`.
+The OEPED workflow validates this layout and updates `OneEasyProblemEveryDay/streak.json`.
 
 ## Early Training Log (2017)
 
