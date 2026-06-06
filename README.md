@@ -5,7 +5,7 @@ Personal competitive-programming archive across multiple years and platforms: Co
 [![Repo Size](https://img.shields.io/github/repo-size/ferez96/Road2BlackRed)](https://github.com/ferez96/Road2BlackRed)
 [![Last Commit](https://img.shields.io/github/last-commit/ferez96/Road2BlackRed)](https://github.com/ferez96/Road2BlackRed/commits/master)
 [![Top Language](https://img.shields.io/github/languages/top/ferez96/Road2BlackRed)](https://github.com/ferez96/Road2BlackRed)
-[![OEPE Streak Workflow](https://img.shields.io/github/actions/workflow/status/ferez96/Road2BlackRed/OneEasyProblemEveryDay-update-streak.yaml?label=OEPE%20streak)](https://github.com/ferez96/Road2BlackRed/actions/workflows/OneEasyProblemEveryDay-update-streak.yaml)
+[![OEPED Streak Workflow](https://img.shields.io/github/actions/workflow/status/ferez96/Road2BlackRed/OneEasyProblemEveryDay-update-streak.yaml?label=OEPED%20streak)](https://github.com/ferez96/Road2BlackRed/actions/workflows/OneEasyProblemEveryDay-update-streak.yaml)
 
 ## What This Repo Contains
 
@@ -16,38 +16,23 @@ Personal competitive-programming archive across multiple years and platforms: Co
 
 ## Repository Map
 
-- `Archived/` - archived solutions by year.
-- `OneEasyProblemEveryDay/` - daily challenge workspace and streak state.
-- `.github/workflows/` - automation (including OEPE streak update workflow).
+- `problem-solving/` — active practice problems, flat `{PLATFORM}-{number}-{slug}/` folders.
+- `OneEasyProblemEveryDay/` — daily challenge workspace and streak state. See [its README](OneEasyProblemEveryDay/README.md).
+- `Archived/` — old solutions organized by year.
+- `.github/workflows/` — OEPED streak automation.
+- `.cursorrules` — naming and scaffold conventions for new problems.
 
 ## Run One Solution
 
 Most files are independent programs. Pick a source file and compile/run directly.
 
-### C++ (Linux/macOS, Git Bash, WSL)
-
 ```bash
-g++ -std=c++17 -O2 -Wall "<path-to-solution>.cpp" -o solution
-./solution < input.txt
+# Go
+go run problem-solving/LC-1-two-sum/main.go
+
+# C++
+g++ -std=c++17 -O2 -Wall solution.cpp -o solution && ./solution < input.txt
 ```
-
-### C++ (Windows PowerShell + g++)
-
-```powershell
-g++ -std=c++17 -O2 -Wall "<path-to-solution>.cpp" -o solution.exe
-Get-Content "input.txt" | .\solution.exe
-```
-
-If a solution uses `freopen(...)`, comment/remove those lines for normal stdin/stdout execution.
-
-## OEPED (One Easy Problem Every Day)
-
-Daily entries should follow:
-
-- `OneEasyProblemEveryDay/YYYY-MM-DD/<solution-file>`
-- Example: `OneEasyProblemEveryDay/2026-04-22/leetcode-15-3sum.go`
-
-The OEPED workflow validates this layout and updates `OneEasyProblemEveryDay/streak.json`.
 
 ## Early Training Log (2017)
 

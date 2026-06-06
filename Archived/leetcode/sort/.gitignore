@@ -1,0 +1,3 @@
+testcases/*.in
+testcases/*.out
+testcases/*.ans

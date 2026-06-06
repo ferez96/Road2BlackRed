@@ -1,4 +1,4 @@
-name: Update OEPE Streak
+name: Update OEPED Streak
 
 on:
   push:
@@ -19,7 +19,7 @@ jobs:
         with:
           fetch-depth: 2
 
-      - name: Detect changed OEPE files
+      - name: Detect changed OEPED files
         id: changed
         run: |
           BEFORE_SHA="${{ github.event.before }}"
@@ -39,82 +39,7 @@ jobs:
         id: streak
         env:
           CHANGED_PATHS: ${{ steps.changed.outputs.changed_paths }}
-        run: |
-          python3 - <<'PY'
-          import datetime as dt
-          import json
-          import os
-          import re
-          import sys
-          from pathlib import Path
-
-          ROOT = Path("OneEasyProblemEveryDay")
-          STREAK_FILE = ROOT / "streak.json"
-          DATE_RE = re.compile(r"^OneEasyProblemEveryDay/(\d{4}-\d{2}-\d{2})/")
-
-          raw = os.environ.get("CHANGED_PATHS", "").strip()
-          changed_paths = [line.strip() for line in raw.splitlines() if line.strip()]
-
-          valid_dates = set()
-          invalid_paths = []
-          for path in changed_paths:
-            p = path.replace("\\", "/")
-            if p in ("OneEasyProblemEveryDay/README.md", "OneEasyProblemEveryDay/streak.json"):
-              continue
-            m = DATE_RE.match(p)
-            if not m:
-              invalid_paths.append(p)
-              continue
-            date_text = m.group(1)
-            try:
-              dt.date.fromisoformat(date_text)
-            except ValueError:
-              invalid_paths.append(p)
-              continue
-            valid_dates.add(date_text)
-
-          if invalid_paths:
-            print("Invalid OEPE paths detected. Use OneEasyProblemEveryDay/YYYY-MM-DD/<file> format.")
-            for item in invalid_paths:
-              print(f"- {item}")
-            sys.exit(1)
-
-          if STREAK_FILE.exists():
-            state = json.loads(STREAK_FILE.read_text(encoding="utf-8"))
-          else:
-            state = {"streak": 0, "last_date": ""}
-
-          streak = int(state.get("streak", 0))
-          last_date_text = state.get("last_date", "")
-          last_date = None
-          if last_date_text:
-            try:
-              last_date = dt.date.fromisoformat(last_date_text)
-            except ValueError:
-              last_date = None
-
-          if valid_dates:
-            newest_date = max(dt.date.fromisoformat(value) for value in valid_dates)
-            if last_date == newest_date:
-              pass
-            elif last_date is not None and newest_date == (last_date + dt.timedelta(days=1)):
-              streak += 1
-            else:
-              streak = 1
-            last_date = newest_date
-
-          new_state = {
-            "streak": streak,
-            "last_date": last_date.isoformat() if last_date else "",
-          }
-          STREAK_FILE.write_text(json.dumps(new_state, indent=2) + "\n", encoding="utf-8")
-
-          output = Path(os.environ["GITHUB_OUTPUT"])
-          with output.open("a", encoding="utf-8") as fh:
-            fh.write(f"streak={new_state['streak']}\n")
-            fh.write(f"last_date={new_state['last_date']}\n")
-            fh.write(f"has_daily_update={'true' if bool(valid_dates) else 'false'}\n")
-          PY
+        run: python3 OneEasyProblemEveryDay/verify.py --gha
 
       - name: Commit streak state
         if: steps.streak.outputs.has_daily_update == 'true'
@@ -126,7 +51,7 @@ jobs:
             echo "No streak changes to commit."
             exit 0
           fi
-          git commit -m "chore(oepe): update streak to ${{ steps.streak.outputs.streak }}"
+          git commit -m "chore(oeped): update streak to ${{ steps.streak.outputs.streak }}"
           git push
 
       - name: Print streak

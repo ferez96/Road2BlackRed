@@ -1,39 +1,21 @@
-# One Easy Problem Every Day (OEPE)
+# One Easy Problem Every Day
 
-## Goal
+Daily practice track. One CP problem per day, any platform.
 
-Solve at least one easy problem per day and keep a consistent streak.
+## File Layout
 
-## Folder Rules
-
-- Put each day's work under `OneEasyProblemEveryDay/YYYY-MM-DD/`.
-- Add one or more solution files in that date folder.
-- Keep `README.md` and `streak.json` at the root of `OneEasyProblemEveryDay/`.
-
-Example:
-
-```text
+```
 OneEasyProblemEveryDay/
-  2026-04-22/
-    leetcode-1-two-sum.cpp
-  README.md
-  streak.json
+  YYYY-MM-DD/
+    {platform}-{number}-{slug}.go   (or .py, .cpp, etc.)
 ```
 
-## Naming Suggestion
+Example: `2026-04-22/LC-15-3sum.go`
 
-Use a descriptive filename:
+## Streak
 
-`<platform>-<problem-id>-<short-title>.<ext>`
+`streak.json` tracks the current streak and last active date. Updated automatically by the GitHub Actions workflow on each push that adds a dated entry.
 
-Examples:
+## Naming
 
-- `leetcode-14-longest-common-prefix.cpp`
-- `codeforces-71a-way-too-long-words.py`
-
-## Streak Policy
-
-- The workflow updates `streak.json` when OEPE files are pushed.
-- A valid daily update is a changed file under `OneEasyProblemEveryDay/YYYY-MM-DD/`.
-- If the new date is exactly 1 day after the previous `last_date`, streak increases by 1.
-- Otherwise, streak resets to 1 for the new date.
+Follow the same convention as `problem-solving/` — see `.cursorrules` at the repo root.
