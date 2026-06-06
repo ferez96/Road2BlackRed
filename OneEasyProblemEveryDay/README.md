@@ -1,5 +1,7 @@
 # One Easy Problem Every Day
 
+[![OEPED Streak](https://img.shields.io/badge/dynamic/json?url=https://raw.githubusercontent.com/ferez96/Road2BlackRed/master/OneEasyProblemEveryDay/streak.json&query=%24.streak&label=OEPED%20streak&color=orange&suffix=%20days)](streak.json)
+
 Daily practice track. One CP problem per day, any platform.
 
 ## File Layout

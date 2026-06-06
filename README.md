@@ -6,6 +6,7 @@ Personal competitive-programming archive across multiple years and platforms: Co
 [![Last Commit](https://img.shields.io/github/last-commit/ferez96/Road2BlackRed)](https://github.com/ferez96/Road2BlackRed/commits/master)
 [![Top Language](https://img.shields.io/github/languages/top/ferez96/Road2BlackRed)](https://github.com/ferez96/Road2BlackRed)
 [![OEPED Streak Workflow](https://img.shields.io/github/actions/workflow/status/ferez96/Road2BlackRed/OneEasyProblemEveryDay-update-streak.yaml?label=OEPED%20streak)](https://github.com/ferez96/Road2BlackRed/actions/workflows/OneEasyProblemEveryDay-update-streak.yaml)
+[![OEPED Streak](https://img.shields.io/badge/dynamic/json?url=https://raw.githubusercontent.com/ferez96/Road2BlackRed/master/OneEasyProblemEveryDay/streak.json&query=%24.streak&label=OEPED%20streak&color=orange&suffix=%20days)](OneEasyProblemEveryDay/README.md)
 
 ## What This Repo Contains
 
