@@ -1,6 +1,6 @@
 # One Easy Problem Every Day
 
-[![OEPED Streak](https://img.shields.io/badge/dynamic/json?style=for-the-badge&url=https://raw.githubusercontent.com/ferez96/Road2BlackRed/master/OneEasyProblemEveryDay/streak.json&query=%24.streak&label=%F0%9F%8F%86%20Streak&color=gold&suffix=%20days)](streak.json)
+[![OEPED Streak](https://img.shields.io/badge/dynamic/json?url=https://raw.githubusercontent.com/ferez96/Road2BlackRed/master/OneEasyProblemEveryDay/streak.json&query=%24.streak&label=%F0%9F%8F%86%20streak&color=gold&suffix=%20days)](streak.json)
 
 Daily practice track. One CP problem per day, any platform.
 
