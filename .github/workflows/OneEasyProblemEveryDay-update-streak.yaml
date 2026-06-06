@@ -17,7 +17,7 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
         with:
-          fetch-depth: 2
+          fetch-depth: 0  # Fetch full history to avoid missing objects
 
       - name: Detect changed OEPED files
         id: changed
@@ -26,7 +26,13 @@ jobs:
           if [ -z "$BEFORE_SHA" ] || [ "$BEFORE_SHA" = "0000000000000000000000000000000000000000" ]; then
             git ls-files "OneEasyProblemEveryDay/**" > changed_files.txt
           else
-            git diff --name-only "$BEFORE_SHA" "${{ github.sha }}" -- "OneEasyProblemEveryDay/**" > changed_files.txt
+            # Verify the object exists before using it
+            if git cat-file -e "$BEFORE_SHA^{commit}" 2>/dev/null; then
+              git diff --name-only "$BEFORE_SHA" "${{ github.sha }}" -- "OneEasyProblemEveryDay/**" > changed_files.txt
+            else
+              # Fallback to listing all files if commit is unavailable
+              git ls-files "OneEasyProblemEveryDay/**" > changed_files.txt
+            fi
           fi
 
           {
