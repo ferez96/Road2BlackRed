@@ -1,11 +1,10 @@
 # Road2BlackRed
-
-Personal competitive-programming archive across multiple years and platforms: Codeforces, CodeChef, Google Code Jam, LeetCode, and more.
-
 [![Repo Size](https://img.shields.io/github/repo-size/ferez96/Road2BlackRed)](https://github.com/ferez96/Road2BlackRed)
 [![Last Commit](https://img.shields.io/github/last-commit/ferez96/Road2BlackRed)](https://github.com/ferez96/Road2BlackRed/commits/master)
 [![Top Language](https://img.shields.io/github/languages/top/ferez96/Road2BlackRed)](https://github.com/ferez96/Road2BlackRed)
 [![OEPED Streak](https://img.shields.io/badge/dynamic/json?url=https://raw.githubusercontent.com/ferez96/Road2BlackRed/master/OneEasyProblemEveryDay/streak.json&query=%24.streak&label=%F0%9F%8F%86%20streak&color=gold&suffix=%20days)](OneEasyProblemEveryDay/README.md)
+
+Personal competitive-programming archive across multiple years and platforms: Codeforces, CodeChef, Google Code Jam, LeetCode, and more.
 
 ## What This Repo Contains
 
