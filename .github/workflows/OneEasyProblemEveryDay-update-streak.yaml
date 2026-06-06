@@ -3,6 +3,7 @@ name: Update OEPED Streak
 on:
   push:
     paths:
+      - .github/workflows/OneEasyProblemEveryDay-update-streak.yaml
       - "OneEasyProblemEveryDay/**"
 
 permissions:
