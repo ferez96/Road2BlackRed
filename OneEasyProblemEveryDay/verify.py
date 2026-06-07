@@ -35,14 +35,16 @@ def save_streak(state: dict) -> None:
     STREAK_FILE.write_text(json.dumps(state, indent=2) + "\n", encoding="utf-8")
 
 
+def last_date_from_state(state: dict) -> dt.date | None:
+    try:
+        return dt.date.fromisoformat(state["last_date"]) if state.get("last_date") else None
+    except ValueError:
+        return None
+
+
 def update_streak(state: dict, date: dt.date) -> dict:
     streak = int(state.get("streak", 0))
-    last_date = None
-    if state.get("last_date"):
-        try:
-            last_date = dt.date.fromisoformat(state["last_date"])
-        except ValueError:
-            pass
+    last_date = last_date_from_state(state)
 
     if last_date == date:
         pass  # already counted today
@@ -85,10 +87,20 @@ def run_gha() -> None:
     has_update = False
 
     if valid_dates:
-        newest = max(valid_dates)
-        state = update_streak(state, newest)
-        save_streak(state)
-        has_update = True
+        last_date = last_date_from_state(state)
+
+        # Ignore changes to past date folders (redos) — they must not affect the streak
+        if last_date is not None:
+            skipped = [d for d in valid_dates if d < last_date]
+            for d in skipped:
+                print(f"SKIP: {d} is older than last recorded date {last_date} (redo ignored)")
+            valid_dates = [d for d in valid_dates if d >= last_date]
+
+        if valid_dates:
+            newest = max(valid_dates)
+            state = update_streak(state, newest)
+            save_streak(state)
+            has_update = True
 
     github_output = os.environ.get("GITHUB_OUTPUT")
     if github_output:
@@ -125,7 +137,12 @@ def main() -> None:
     parser = argparse.ArgumentParser()
     parser.add_argument("date", nargs="?", help="YYYY-MM-DD (default: today)")
     parser.add_argument("--gha", action="store_true", help="run in GHA mode")
+    parser.add_argument("--streak-file", type=Path, help="override streak.json path")
     args = parser.parse_args()
+
+    if args.streak_file:
+        global STREAK_FILE
+        STREAK_FILE = args.streak_file
 
     if args.gha:
         run_gha()
