@@ -1,4 +1,4 @@
-venv := ".venv/bin/python"
+venv := if path_exists(".venv/bin/python") == "true" { ".venv/bin/python" } else { "python3" }
 oeped := "OneEasyProblemEveryDay"
 
 # show available recipes
