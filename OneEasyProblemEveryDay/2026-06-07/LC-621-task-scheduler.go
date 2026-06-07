@@ -50,52 +50,52 @@ func NewHeap(alloc int) *TaskGroupHeap {
 	}
 }
 
-func (h *TaskGroupHeap) Size() int {
+func (h TaskGroupHeap) Size() int {
 	return h.size
 }
 
 func (h *TaskGroupHeap) Push(tg TaskGroup) {
 	h.size++
 	h.heap[h.size] = tg
-	h.heapUp(h.size)
+	h.siftUp(h.size)
 }
 
 func (h *TaskGroupHeap) Pop() TaskGroup {
 	copied := h.heap[1]
-	h.swap(1, h.size)            // move the heap root to the last item to safely pop out, the heap lost its order
-	h.heap[h.size] = TaskGroup{} // remove the last item, which is poping out
-    h.size--    
-	h.heapDown(1)	
+	h.swap(1, h.size)
+	h.size--
+	h.siftDown(1)
 	return copied
 }
 
-func (h *TaskGroupHeap) swap(pos1, pos2 int) {
-	t := h.heap[pos1]
-	h.heap[pos1] = h.heap[pos2]
-	h.heap[pos2] = t
-}
+func (h TaskGroupHeap) less(i, j int) bool { return h.heap[i].Count < h.heap[j].Count }
 
+func (h TaskGroupHeap) swap(i, j int) { h.heap[i], h.heap[j] = h.heap[j], h.heap[i] }
 
-func (h *TaskGroupHeap) heapUp(pos int) {
-	parrent := pos / 2
-	for pos > 1 && h.heap[pos].Count > h.heap[parrent].Count {
-		h.swap(pos, parrent)
-		pos = parrent
-		parrent = pos / 2
+func (h TaskGroupHeap) siftUp(pos int) {
+	if pos <= 1 {
+		return
+	}
+	par := pos / 2
+	if par >= 1 && h.less(par, pos) {
+		h.swap(pos, par)
+		h.siftUp(par)
 	}
 }
 
-func (h TaskGroupHeap) heapDown(pos int) {
-	for i := range h.size{
-        pos := i+1        
-		lChild := pos*2
-		rChild := pos*2 + 1
-        if lChild <= h.size && h.heap[pos].Count < h.heap[lChild].Count {            
-            h.swap(pos, lChild)
-        }
-        if rChild <= h.size && h.heap[pos].Count < h.heap[rChild].Count {            
-            h.swap(pos, rChild)
-        }
+func (h TaskGroupHeap) siftDown(pos int) {
+	// leaf check
+	if 2*pos > h.size {
+		return
+	}
+	lc, rc := pos*2, pos*2+1
+	mc := lc
+	if rc <= h.size && h.less(lc, rc) {
+		mc = rc
+	}
+	if h.less(pos, mc) {
+		h.swap(pos, mc)
+		h.siftDown(mc)
 	}
 }
 
@@ -117,12 +117,12 @@ func leastInterval(tasks []byte, n int) int {
 	for gHeap.Size() > 0 {
 		tGroup := gHeap.Pop()
 		// all groups have 1 left
-		if tGroup.Count == 1 {			
-			return ans+gHeap.Size()+1
+		if tGroup.Count == 1 {
+			return ans + gHeap.Size() + 1
 		}
 
 		// write A _ _ A then fill up the open spots
-		ans += n+1
+		ans += n + 1
 		groups := []TaskGroup{}
 		for range n {
 			if gHeap.Size() > 0 {
@@ -143,17 +143,17 @@ func leastInterval(tasks []byte, n int) int {
 }
 
 func main() {
-	fmt.Println(leastInterval([]byte{'A', 'A', 'A', 'B', 'B', 'B'}, 2))                          // expected: 8
+	fmt.Println(leastInterval([]byte{'A', 'A', 'A', 'B', 'B', 'B'}, 2))                               // expected: 8
 	fmt.Println(leastInterval([]byte{'A', 'A', 'A', 'A', 'A', 'A', 'B', 'C', 'D', 'E', 'F', 'G'}, 2)) // expected: 16
-	fmt.Println(leastInterval([]byte{'A', 'A', 'A'}, 2))                                           // expected: 7
-	fmt.Println(leastInterval([]byte{'A', 'B', 'C', 'D'}, 3))                                      // expected: 4
-	fmt.Println(leastInterval([]byte{'A'}, 2))                                                     // expected: 1
-	fmt.Println(leastInterval([]byte{'A', 'A', 'A', 'A'}, 3))                                      // expected: 13
-	fmt.Println(leastInterval([]byte{'A', 'B', 'C'}, 2))                                           // expected: 3
-	fmt.Println(leastInterval([]byte{'A', 'A', 'B', 'B', 'C', 'C'}, 2))                            // expected: 6
-	fmt.Println(leastInterval([]byte{'A', 'A', 'A', 'B', 'B', 'B'}, 0))                            // expected: 6
-	fmt.Println(leastInterval([]byte{'A', 'A', 'A', 'B', 'B', 'B'}, 3))                            // expected: 10
-	fmt.Println(leastInterval([]byte{'A', 'A', 'B'}, 2))                                           // expected: 4 - AB.A
-	fmt.Println(leastInterval([]byte{'A', 'A', 'A', 'B', 'B', 'C', 'D'}, 2))                                 // expected: 7 - ABCABDA
-	fmt.Println(leastInterval([]byte{'A','A','A','B','B','B','C','C','C','D','D','E'}, 2)) // expected: 12 - ABCABCDABCDE
+	fmt.Println(leastInterval([]byte{'A', 'A', 'A'}, 2))                                              // expected: 7
+	fmt.Println(leastInterval([]byte{'A', 'B', 'C', 'D'}, 3))                                         // expected: 4
+	fmt.Println(leastInterval([]byte{'A'}, 2))                                                        // expected: 1
+	fmt.Println(leastInterval([]byte{'A', 'A', 'A', 'A'}, 3))                                         // expected: 13
+	fmt.Println(leastInterval([]byte{'A', 'B', 'C'}, 2))                                              // expected: 3
+	fmt.Println(leastInterval([]byte{'A', 'A', 'B', 'B', 'C', 'C'}, 2))                               // expected: 6
+	fmt.Println(leastInterval([]byte{'A', 'A', 'A', 'B', 'B', 'B'}, 0))                               // expected: 6
+	fmt.Println(leastInterval([]byte{'A', 'A', 'A', 'B', 'B', 'B'}, 3))                               // expected: 10
+	fmt.Println(leastInterval([]byte{'A', 'A', 'B'}, 2))                                              // expected: 4 - AB.A
+	fmt.Println(leastInterval([]byte{'A', 'A', 'A', 'B', 'B', 'C', 'D'}, 2))                          // expected: 7 - ABCABDA
+	fmt.Println(leastInterval([]byte{'A', 'A', 'A', 'B', 'B', 'B', 'C', 'C', 'C', 'D', 'D', 'E'}, 2)) // expected: 12 - ABCABCDABCDE
 }
