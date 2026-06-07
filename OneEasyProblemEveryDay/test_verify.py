@@ -96,9 +96,10 @@ class TestParseChangedPaths:
         assert dates == []
         assert invalid == []
 
-    def test_invalid_path_outside_date_folder(self):
-        _, invalid = parse_changed_paths("OneEasyProblemEveryDay/solution.go")
-        assert invalid == ["OneEasyProblemEveryDay/solution.go"]
+    def test_flat_infra_file_is_skipped(self):
+        dates, invalid = parse_changed_paths("OneEasyProblemEveryDay/solution.go")
+        assert dates == []
+        assert invalid == []
 
     def test_multiple_files_same_date(self):
         raw = "\n".join([make_path("2026-06-01", "a.go"), make_path("2026-06-01", "b.go")])

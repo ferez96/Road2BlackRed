@@ -28,7 +28,8 @@ ROOT = Path(__file__).parent
 STREAK_FILE = ROOT / "streak.json"
 DATE_RE = re.compile(r"^OneEasyProblemEveryDay/(\d{4}-\d{2}-\d{2})/")
 
-SKIP = {"OneEasyProblemEveryDay/README.md", "OneEasyProblemEveryDay/streak.json"}
+# flat files directly under OneEasyProblemEveryDay/ are infra — skip silently
+FLAT_FILE_RE = re.compile(r"^OneEasyProblemEveryDay/[^/]+$")
 
 
 def load_streak() -> dict:
@@ -66,7 +67,7 @@ def parse_changed_paths(raw: str) -> tuple[list[dt.date], list[str]]:
     valid_dates, invalid = [], []
     for line in raw.splitlines():
         path = line.strip().replace("\\", "/")
-        if not path or path in SKIP:
+        if not path or FLAT_FILE_RE.match(path):
             continue
         m = DATE_RE.match(path)
         if not m:
