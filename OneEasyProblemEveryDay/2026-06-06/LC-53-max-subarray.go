@@ -55,7 +55,7 @@ func maxSubArray(nums []int) int {
 	currentSum := 0
 	for _, num := range nums {
 		currentSum += num
-		maxSum = max(maxSum, currentSum)		
+		maxSum = max(maxSum, currentSum)
 		if currentSum < 0 {
 			currentSum = 0
 		}
@@ -65,7 +65,7 @@ func maxSubArray(nums []int) int {
 
 // len(nums) must > 0
 func maxElement(nums []int) int {
-	maxNum := MinElementValue-1
+	maxNum := MinElementValue - 1
 	for _, num := range nums {
 		maxNum = max(maxNum, num)
 	}
@@ -74,6 +74,6 @@ func maxElement(nums []int) int {
 
 func main() {
 	fmt.Println(maxSubArray([]int{-2, 1, -3, 4, -1, 2, 1, -5, 4})) // expected: 6
-	fmt.Println(maxSubArray([]int{1}))                               // expected: 1
-	fmt.Println(maxSubArray([]int{5, 4, -1, 7, 8}))                 // expected: 23
+	fmt.Println(maxSubArray([]int{1}))                             // expected: 1
+	fmt.Println(maxSubArray([]int{5, 4, -1, 7, 8}))                // expected: 23
 }
