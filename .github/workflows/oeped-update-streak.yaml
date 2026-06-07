@@ -3,7 +3,7 @@ name: OEPED — Update Streak
 on:
   push:
     paths:
-      - "OneEasyProblemEveryDay/????-??-??/**"
+      - "OneEasyProblemEveryDay/**"
   workflow_dispatch:
 
 permissions:
