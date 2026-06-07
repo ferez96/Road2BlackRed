@@ -28,3 +28,6 @@ simulate path:
 # run verifier in GHA mode (reads CHANGED_PATHS from env)
 gha:
     {{ venv }} {{ oeped }}/verify.py --gha
+
+fmt:
+    find . -name "*.go" -print0 | xargs -0 gofmt -w -s -l
