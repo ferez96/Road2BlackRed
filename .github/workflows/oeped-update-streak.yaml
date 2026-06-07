@@ -1,0 +1,56 @@
+name: OEPED — Update Streak
+
+on:
+  push:
+    paths:
+      - .github/workflows/oeped-update-streak.yaml
+      - "OneEasyProblemEveryDay/**"
+
+permissions:
+  contents: write
+
+jobs:
+  streak:
+    if: github.actor != 'github-actions[bot]'
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+
+      - uses: extractions/setup-just@v3
+
+      - name: Detect changed files
+        id: changed
+        run: |
+          BEFORE="${{ github.event.before }}"
+          if [ -z "$BEFORE" ] || [ "$BEFORE" = "0000000000000000000000000000000000000000" ] || ! git cat-file -e "$BEFORE^{commit}" 2>/dev/null; then
+            git ls-files "OneEasyProblemEveryDay/**" > changed_files.txt
+          else
+            git diff --name-only "$BEFORE" "${{ github.sha }}" -- "OneEasyProblemEveryDay/**" > changed_files.txt
+          fi
+          { echo "paths<<EOF"; cat changed_files.txt; echo "EOF"; } >> "$GITHUB_OUTPUT"
+
+      - name: Validate and update streak
+        id: verify
+        env:
+          CHANGED_PATHS: ${{ steps.changed.outputs.paths }}
+        run: just gha
+
+      - name: Commit streak
+        if: steps.verify.outputs.has_daily_update == 'true'
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add OneEasyProblemEveryDay/streak.json
+          git diff --cached --quiet && exit 0
+          git commit -m "chore(oeped): update streak to ${{ steps.verify.outputs.streak }}"
+          git push
+
+      - run: just streak

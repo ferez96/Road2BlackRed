@@ -3,7 +3,13 @@ import sys; sys.stdout.reconfigure(encoding="utf-8")
 """
 OEPED verifier — validates daily entries and updates streak.json.
 
-Local usage:
+Local usage (prefer just):
+  just verify                       # check today
+  just check 2026-06-06             # check a specific date
+  just test                         # run tests
+  just simulate "OneEasyProblemEveryDay/2026-06-06/solution.go"
+
+Direct usage:
   python verify.py                  # check today
   python verify.py 2026-06-06       # check a specific date
 

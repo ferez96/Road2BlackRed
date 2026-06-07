@@ -31,3 +31,9 @@ tasks.json
 *.inp
 *.out
 *:tests
+
+# === Python ===
+.venv/
+__pycache__/
+*.pyc
+.pytest_cache/

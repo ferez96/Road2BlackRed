@@ -18,6 +18,16 @@ Example: `2026-04-22/LC-15-3sum.go`
 
 `streak.json` tracks the current streak and last active date. Updated automatically by the GitHub Actions workflow on each push that adds a dated entry.
 
+## Local commands
+
+```
+just test                  # run tests
+just verify                # verify today's entry and update streak.json
+just check 2026-06-07      # verify a specific date
+just streak                # print current streak
+just simulate "OneEasyProblemEveryDay/2026-06-07/solution.go"  # simulate a GHA push
+```
+
 ## Naming
 
 Follow the same convention as `problem-solving/` — see `.cursorrules` at the repo root.
