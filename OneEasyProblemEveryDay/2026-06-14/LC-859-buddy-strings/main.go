@@ -4,10 +4,14 @@ package main
 // Link: https://leetcode.com/problems/buddy-strings/
 //
 // Approach:
-//   [write your thinking here before coding]
+//   4 cases handling:
+//		- if the length is not the same => fail
+//		- if the strings have only 2 diff characters => try swap them and check
+//		- if the strings are identical => swap any pair of positions that have the same character = keep the string after swap
+//		- if the strings have non-zero-or-two diff characters => unable to make any valid operation
 //
-// Time:  O(?)
-// Space: O(?)
+// Time:  O(n) | n = len(s)
+// Space: O(n) | n = len(s)
 
 import "fmt"
 
