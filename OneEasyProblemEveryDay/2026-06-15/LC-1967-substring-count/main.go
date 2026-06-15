@@ -3,10 +3,17 @@ package main
 // LC 1967. Number of Strings That Appear as Substrings in Word
 // Link: https://leetcode.com/problems/number-of-strings-that-appear-as-substrings-in-word/
 //
-// Approach: store all substrings in a hash map and look up to count valid patterns
+// Approach: generate all substrings of word and store them in a hash set.
+// Each substring slice is O(1), but inserting a string key into a map
+// requires hashing all characters in the substring.
 //
-// Time: O(N^3)
-// Space: O(N^2)
+// Time:
+//   Build hash set: O(N^3)
+//   Pattern lookup: O(P * N)
+//   Total: O(N^3 + P*N)
+//
+// Space:
+//   O(N^2) hash set entries
 
 import "fmt"
 
