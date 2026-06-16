@@ -20,11 +20,11 @@ import "fmt"
 func numOfStrings(patterns []string, word string) int {
 	dict := make(map[string]bool)
 	for i := 0; i < len(word); i++ {
-		for j := i+1; j <= len(word); j++ {
+		for j := i + 1; j <= len(word); j++ {
 			dict[word[i:j]] = true
 		}
 	}
-	
+
 	cnt := 0
 	for _, pattern := range patterns {
 		if dict[pattern] {
