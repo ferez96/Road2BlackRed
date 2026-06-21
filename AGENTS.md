@@ -36,14 +36,16 @@ No README. Problem link and thoughts go in the code file.
 ```go
 package main
 
-// {Platform} {number}. {Title}
-// Link: {problem_url}
-//
-// Approach:
-//   [write your thinking here before coding]
-//
-// Time:  O(?)
-// Space: O(?)
+/*
+{Platform} {number}. {Title}
+Link: {problem_url}
+
+Approach:
+  [write your thinking here before coding]
+
+Time:  O(?)
+Space: O(?)
+*/
 
 import "fmt"
 

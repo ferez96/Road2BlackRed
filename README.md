@@ -19,7 +19,7 @@ Personal competitive-programming archive across multiple years and platforms: Co
 - `OneEasyProblemEveryDay/` — daily challenge workspace and streak state. See [its README](OneEasyProblemEveryDay/README.md).
 - `Archived/` — old solutions organized by year.
 - `.github/workflows/` — OEPED streak automation.
-- `.cursorrules` — naming and scaffold conventions for new problems.
+- `AGENTS.md` — naming and scaffold conventions for new problems.
 
 ## Run One Solution
 

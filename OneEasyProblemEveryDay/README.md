@@ -30,4 +30,4 @@ just simulate "OneEasyProblemEveryDay/2026-06-07/solution.go"  # simulate a GHA 
 
 ## Naming
 
-Follow the same convention as `problem-solving/` — see `.cursorrules` at the repo root.
+Follow the same convention as `problem-solving/` — see `AGENTS.md` at the repo root.
