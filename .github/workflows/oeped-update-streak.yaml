@@ -37,7 +37,7 @@ jobs:
         id: verify
         env:
           CHANGED_PATHS: ${{ steps.changed.outputs.paths }}
-        run: just gha
+        run: just oeped gha
 
       - name: Commit streak
         if: steps.verify.outputs.has_daily_update == 'true'
@@ -48,5 +48,3 @@ jobs:
           git diff --cached --quiet && exit 0
           git commit -m "chore(oeped): update streak to ${{ steps.verify.outputs.streak }} [no ci]"
           git push
-
-      - run: just streak

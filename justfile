@@ -1,5 +1,5 @@
 venv := if path_exists(".venv/bin/python") == "true" { ".venv/bin/python" } else { "python3" }
-oeped := "OneEasyProblemEveryDay"
+oeped_dir := "OneEasyProblemEveryDay"
 
 # show available recipes
 default:
@@ -7,27 +7,12 @@ default:
 
 # run OEPED tests
 test:
-    {{ venv }} -m pytest {{ oeped }}/test_verify.py -v
+    {{ venv }} -m pytest {{ oeped_dir }}/test_oeped.py -v
 
-# verify today's entry and update streak.json
-verify:
-    {{ venv }} {{ oeped }}/verify.py
-
-# verify a specific date: just check 2026-06-07
-check date:
-    {{ venv }} {{ oeped }}/verify.py {{ date }}
-
-# show current streak
-streak:
-    @cat {{ oeped }}/streak.json
-
-# simulate GHA run with a given path: just simulate "OneEasyProblemEveryDay/2026-06-07/solution.go"
-simulate path:
-    CHANGED_PATHS="{{ path }}" {{ venv }} {{ oeped }}/verify.py --gha
-
-# run verifier in GHA mode (reads CHANGED_PATHS from env)
-gha:
-    {{ venv }} {{ oeped }}/verify.py --gha
-
+# format all Go files
 fmt:
-    find . -name "*.go" -print0 | xargs -0 gofmt -w -s -l
+    find . -name "*.go" -print0 | xargs -0 gofmt -w
+
+# run an oeped.py subcommand: just oeped mkdir | just oeped run | just oeped record | just oeped record 2026-06-07 | just oeped gha | just oeped simulate <path>
+oeped +args:
+    {{ venv }} {{ oeped_dir }}/oeped.py {{ args }}

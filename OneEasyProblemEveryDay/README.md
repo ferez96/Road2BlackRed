@@ -21,12 +21,14 @@ Example: `2026-04-22/LC-15-3sum.go`
 ## Local commands
 
 ```
-just test                  # run tests
-just verify                # verify today's entry and update streak.json
-just check 2026-06-07      # verify a specific date
-just streak                # print current streak
-just simulate "OneEasyProblemEveryDay/2026-06-07/solution.go"  # simulate a GHA push
+just oeped mkdir           # create today's directory (YYYY-MM-DD/)
+just oeped run             # go run today's solution
+just oeped record          # record today's solve and update streak
+just oeped record 2026-06-07  # record a specific date
+just oeped streak          # show current streak
 ```
+
+`oeped.py` is the one-for-all helper script — add new subcommands there as needed.
 
 ## Naming
 

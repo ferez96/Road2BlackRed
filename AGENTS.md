@@ -60,9 +60,24 @@ func main() {
 }
 ```
 
+## Daily workflow
+
+```
+just oeped mkdir           # create today's directory (YYYY-MM-DD/)
+just oeped run             # go run today's solution
+just oeped record          # record today's solve and update streak
+just oeped record 2026-06-07  # record a specific date
+just oeped streak          # show current streak
+```
+
+`oeped.py` in `OneEasyProblemEveryDay/` is the one-for-all helper. Add subcommands there.
+
 ## Rules
 
 - **Do NOT implement the solution.** Scaffold only: link, empty thought block, function signature, test calls with expected values in comments.
+- If the user provides a solution, write the full implementation as-is.
 - User writes the solution and fills in the Approach block.
 - Variants (different language or different approach) go in a subfolder, same structure.
 - No README files — the problem link in the code is sufficient.
+- Do NOT run `oeped.py record` or `oeped.py gha` — they write to `streak.json`.
+- Do NOT run the solution code.

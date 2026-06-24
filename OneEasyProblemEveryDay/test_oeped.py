@@ -13,11 +13,11 @@ import pytest
 # Helpers
 # ---------------------------------------------------------------------------
 
-VERIFY = Path(__file__).parent / "verify.py"
+OEPED = Path(__file__).parent / "oeped.py"
 
 
 def run_gha(changed_paths: str, streak_state: dict | None = None) -> subprocess.CompletedProcess:
-    """Run verify.py --gha with an isolated streak.json in a temp dir."""
+    """Run oeped.py gha with an isolated streak.json in a temp dir."""
     with tempfile.TemporaryDirectory() as tmp:
         tmp_path = Path(tmp)
         streak_file = tmp_path / "streak.json"
@@ -26,7 +26,7 @@ def run_gha(changed_paths: str, streak_state: dict | None = None) -> subprocess.
 
         env = {**os.environ, "CHANGED_PATHS": changed_paths}
         result = subprocess.run(
-            [sys.executable, str(VERIFY), "--gha", "--streak-file", str(streak_file)],
+            [sys.executable, str(OEPED), "gha", "--streak-file", str(streak_file)],
             env=env,
             capture_output=True,
             text=True,
@@ -50,7 +50,7 @@ def make_path(date: str, filename: str = "solution.go") -> str:
 # update_streak unit tests (pure function, no filesystem)
 # ---------------------------------------------------------------------------
 
-from verify import update_streak, parse_changed_paths  # noqa: E402
+from oeped import update_streak, parse_changed_paths  # noqa: E402
 
 
 class TestUpdateStreak:
