@@ -25,7 +25,7 @@ func addDigits(num int) int {
 }
 
 func main() {
-	fmt.Println(addDigits(38)) // expected: 2
-	fmt.Println(addDigits(0))  // expected: 0
+	fmt.Println(addDigits(38))  // expected: 2
+	fmt.Println(addDigits(0))   // expected: 0
 	fmt.Println(addDigits(199)) // expected: 1
 }

@@ -47,6 +47,6 @@ func luckyNumbers(matrix [][]int) []int {
 
 func main() {
 	fmt.Println(luckyNumbers([][]int{{3, 7, 8}, {9, 11, 13}, {15, 16, 17}})) // expected: [15]
-	fmt.Println(luckyNumbers([][]int{{7, 8}, {1, 2}}))                         // expected: [7]
-	fmt.Println(luckyNumbers([][]int{{1, 2}, {3, 4}}))                         // expected: [3]
+	fmt.Println(luckyNumbers([][]int{{7, 8}, {1, 2}}))                       // expected: [7]
+	fmt.Println(luckyNumbers([][]int{{1, 2}, {3, 4}}))                       // expected: [3]
 }
