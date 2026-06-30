@@ -1,6 +1,6 @@
 package main
 
-const MAX_VALUE = 10000
+const MAX_VALUE = 1<<14 - 1 // 11111111111111
 const INF_STEPS = 41
 
 func minRemovals(nums []int, target int) int {
@@ -9,22 +9,23 @@ func minRemovals(nums []int, target int) int {
 		dp[i] = make([]int, MAX_VALUE+1)
 	}
 
-	for j := range MAX_VALUE + 1 {
-		dp[0][j] = INF_STEPS
+	for i := range len(nums) {
+		for j := range MAX_VALUE + 1 {
+			dp[i][j] = INF_STEPS
+		}
 	}
+
 	if nums[0] == 0 {
 		dp[0][0] = 0
 	} else {
-		dp[0][nums[0]] = 1
+		dp[0][0] = 1
+		dp[0][nums[0]] = 0
 	}
 
 	for i := 1; i < len(nums); i++ {
 		for j := range MAX_VALUE + 1 {
-			dp[i][j] = INF_STEPS
 			dp[i][j] = min(dp[i][j], dp[i-1][j]+1)
-			if j^nums[i] <= MAX_VALUE {
-				dp[i][j] = min(dp[i][j], dp[i-1][j^nums[i]])
-			}
+			dp[i][j] = min(dp[i][j], dp[i-1][j^nums[i]])
 		}
 	}
 
